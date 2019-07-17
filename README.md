@@ -1,6 +1,6 @@
 # UiWatcher Documentation
 
-UiWatcher is a web analytics tool. UiViewer is an accompanying tool that is used to visualize the data collected by UiWatcher. UiWatcher/UiViewer require a subsription from *UXT* in order to be used.
+UiWatcher is a web analytics tool. UiViewer is an accompanying tool that is used to visualize the data collected by UiWatcher. UiWatcher/UiViewer require a subscription from **UXT** in order to be used.
 
 # Versions
 
@@ -51,7 +51,7 @@ The UiViewer will visualize the data captured by the UiWatcher.
     var viewer;
 
     window.onload = function() {
-        // name is the name of the UiViewer instance varrable (see assignment below)
+        // name is the name of the UiViewer instance varriable (see assignment below)
         // accountId is your UXT account ID
         // token is your product's viewer token (NOTE: watcher and viewer tokens are distinct per product)
         // pageId is the unique page name that you are viewing activity for
