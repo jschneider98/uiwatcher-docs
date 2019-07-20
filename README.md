@@ -62,7 +62,7 @@ The UiViewer will visualize the data captured by the UiWatcher.
             pageId: "login"
         }
 
-        // "viewer" is the UiViewer instance varrable (must be passed as a param to the constructor)
+        // "viewer" is the UiViewer instance varriable (must be passed as a param to the constructor)
         viewer = new UiViewer(params);
     };
 
@@ -71,7 +71,7 @@ The UiViewer will visualize the data captured by the UiWatcher.
 
 ### Single Page Apps (SPA)
 
-If you're app is an SPA, then you can use the **setPageId()** method to update the page you're tracking data for. It's recommended you set the Page ID each time you're SPA changes it's route.
+If you're app is an SPA, then you can use the **setPageId()** method to update the page you're tracking data for. It's recommended you set the Page ID each time your SPA changes it's route.
 
 ```
 // NOTE: Both the UiWatcher and UiViewer have a setPageId() method.
@@ -104,7 +104,7 @@ viewer.setPageId('dashboard');
 The constructor takes a single object parameter. The parameter has three required properties.
 
 * **accountId** Your UXT accountId
-* **token** UiWatcher token. Created and displayed when you create a **product** in UXT.
+* **token** UiWatcher token. Created and displayed when you create a **product** in **UXT**.
 * **pageId** The page name that uniquely describes the page your are currently tracking data for.
 
 ```
@@ -118,7 +118,7 @@ let watcher = new UiWatcher(params);
 ```
 
 #### UiWatcher.setPageId(pageId)
-Sets the pageId. This is useful for Single Page Apps or if you want to customize how you track specific pages.
+Sets the **pageId**. This is useful for Single Page Apps or if you want to customize how you track specific pages.
 
 ```
 watcher.setPageId('login');
@@ -146,7 +146,7 @@ The constructor takes a single object parameter. The parameter has four required
 
 * **name** The UiViewer instance name. Must be a global var.
 * **accountId** Your UXT accountId
-* **token** UiViewer token. Created and displayed when you create a **product** in UXT.
+* **token** UiViewer token. Created and displayed when you create a **product** in **UXT**.
 * **pageId** The page name that uniquely describes the page your are currently viewing data for.
 
 ```
@@ -157,12 +157,12 @@ let params = {
     pageId: "login"
 }
 
-// "viewer" is the UiViewer instance varrable (must be passed as a param to the constructor)
+// "viewer" is the UiViewer instance varriable (must be passed as a param to the constructor)
 viewer = new UiViewer(params);
 ```
 
 #### UiViewer.setPageId(pageId)
-Sets the pageId. This is useful for Single Page Apps or if you want to customize how you view specific pages.
+Sets the **pageId**. This is useful for Single Page Apps or if you want to customize how you view specific pages.
 
 ```
 viewer.setPageId('login');
@@ -170,7 +170,7 @@ viewer.setPageId('home');
 ```
 
 #### UiViewer.update()
-Updates the current view. Applying any filter options and then re-drawing all the data visualisations.
+Updates the current view. Applying any filter options and then re-drawing all the data visualizations.
 
 ```
 viewer.update();
@@ -184,7 +184,7 @@ viewer.toggle();
 ```
 
 #### UiViewer.draw()
-Re-draws all the data visualisations.
+Re-draws all the data visualizations.
 
 ```
 viewer.draw();
