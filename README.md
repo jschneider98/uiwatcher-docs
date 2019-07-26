@@ -13,7 +13,7 @@ The current version is: **uiwatcher-0.0.1.min.js**
 ### UiWatcher
 The UiWatcher tracks user activity.
 ```
-<script src="http://www.uiwatcher.com/dist/uiwatcher.min.js"></script>
+<script src="https://www.uiwatcher.com/dist/uiwatcher.min.js"></script>
 
 <script>
     var watcher;
@@ -43,7 +43,7 @@ The UiWatcher tracks user activity.
 ### UiViewer
 The UiViewer will visualize the data captured by the UiWatcher.
 ```
-<script src="http://www.uiwatcher.com/dist/uiwatcher.min.js"></script>
+<script src="https://www.uiwatcher.com/dist/uiwatcher.min.js"></script>
 
 <script>
     // The UiViewer instance varriable will be assigned to this var.
