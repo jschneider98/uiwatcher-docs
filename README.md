@@ -54,7 +54,8 @@ You can of course do more with the tool than the minium. For instance, you can t
             // at a minimum, add the username to the context
             $ui.watcher.addContext("username", "jdoe");
 
-            // If your usernames aren't unique, then you can specify a clientId value to further identify your users
+            // If your usernames aren't unique, then you can specify a clientId value to
+            // further identify your users
             $ui.watcher.addContext("clientId", "my-client-id");
 
             // You aren't limited in what context you want to track.
@@ -112,7 +113,7 @@ $ui.newPage('home');
 
 ### UiWatcher
 
-User analytics and behavior object. Must call $ui.initWatcher(params) to initialize.
+User analytics and behavior object. Must call `$ui.initWatcher(params)` to initialize.
 
 #### UiWatcher.addContext(key, value)
 
