@@ -1,191 +1,177 @@
 # UiWatcher Documentation
 
-UiWatcher is a web analytics tool. UiViewer is an accompanying tool that is used to visualize the data collected by UiWatcher. UiWatcher/UiViewer require a subscription from **UXT** in order to be used.
-
-# Versions
-
-The most recent version of UiWatcher will have the name **uiwatcher.min.js**. If you prefer to use a specific release of the tool you can use the following naming convention: **uiwatcher-MAJOR.MINOR.PATCH.min.js**.
-  
-The current version is: **uiwatcher-0.0.1.min.js**
+UiWatcher is a web analytics and user behavior tool. UiWatcher requires a subscription from **GoGo User** in order to be used.
 
 # Quick Start
 
 ### UiWatcher
-The UiWatcher tracks user activity.
+The UiWatcher tracks user activity. Generally speaking all you need to do to start tracking analytic data is to copy/paste the code snippit provided to you when you create a product in GoGo User.
 ```
-<script src="https://www.uiwatcher.com/dist/uiwatcher.min.js"></script>
+<body>
+    <!-- Your web page body -->
 
-<script>
-    var watcher;
+    <!-- This script tag can be added to your <head> tag if you prefer -->
+    <script src="https://app.gogouser.com/dist/uiwatcher.min.js"></script>
 
-    window.onload = function() {
-        // accountId is your UXT account ID
-        // token is your product's watcher token
-        // pageId is the unique page that you are tracking activity for
-        let params = {
-            accountId: "11111111-1111-1111-1111-111111111111",
-            token: "22222222-2222-2222-2222-222222222222",
-            pageId: "login"
-        }
+    <!-- This snippet needs to be added to the bottom of your <body> tag -->
+    <script>
+        window.addEventListener("load", function() {
+            // accountId is your GoGo User account ID
+            // token is your product's watcher token
+            const params = {
+                accountId: "11111111-1111-1111-1111-111111111111",
+                token: "22222222-2222-2222-2222-222222222222"
+            }
 
-        watcher = new UiWatcher(params);
-
-        // You can add custom analytic context values.
-        // If you track users, it's highly recommend to,
-        // at a minimum, add the username to the context
-        watcher.addContext("client", "my-client");
-        watcher.addContext("username", "jdoe");
-    };
-
-</script>
+            $ui.initWatcher(params);
+    </script>
+</body>
 ```
 
-### UiViewer
-The UiViewer will visualize the data captured by the UiWatcher.
+You can of course do more with the tool than the minium. For instance, you can track custom analytic context values.
 ```
-<script src="https://www.uiwatcher.com/dist/uiwatcher.min.js"></script>
+<body>
+    <!-- Your web page body -->
 
-<script>
-    // The UiViewer instance varriable will be assigned to this var.
-    // NOTE: This instance varriable must be globally accessable.
-    var viewer;
+    <!-- This script tag can be added to your <head> tag if you prefer -->
+    <script src="https://app.gogouser.com/dist/uiwatcher.min.js"></script>
 
-    window.onload = function() {
-        // name is the name of the UiViewer instance varriable (see assignment below)
-        // accountId is your UXT account ID
-        // token is your product's viewer token (NOTE: watcher and viewer tokens are distinct per product)
-        // pageId is the unique page name that you are viewing activity for
-        let params = {
-            name: "viewer",
-            accountId: "11111111-1111-1111-1111-111111111111",
-            token: "33333333-3333-3333-3333-333333333333",
-            pageId: "login"
-        }
+    <!-- This snippet needs to be added to the bottom of your <body> tag -->
+    <script>
+        window.addEventListener("load", function() {
+            // accountId is your GoGo Userr account ID
+            // token is your product's watcher token
+            const params = {
+                accountId: "11111111-1111-1111-1111-111111111111",
+                token: "22222222-2222-2222-2222-222222222222"
+            }
 
-        // "viewer" is the UiViewer instance varriable (must be passed as a param to the constructor)
-        viewer = new UiViewer(params);
-    };
+            $ui.initWatcher(params);
 
-</script>
+            // You can add custom analytic context values.
+            // If you track users, it's highly recommend to,
+            // at a minimum, add the username to the context
+            $ui.watcher.addContext("username", "jdoe");
+
+            // If your usernames aren't unique, then you can specify a clientId value to further identify your users
+            $ui.watcher.addContext("clientId", "my-client-id");
+
+            // You aren't limited in what context you want to track.
+            $ui.watcher.addContext("favorite-color", "Blue! No... Aaaaahhh.");
+        });
+    </script>
+</body>
 ```
 
 ### Single Page Apps (SPA)
 
-If you're app is an SPA, then you can use the **setPageId()** method to update the page you're tracking data for. It's recommended you set the Page ID each time your SPA changes it's route.
+If you're app is an SPA, then you can use the **newPage()** method to update the page you're tracking data for. It's recommended you call newPage() each time your SPA changes it's route.
 
 ```
-// NOTE: Both the UiWatcher and UiViewer have a setPageId() method.
-
-watcher.setPageId('login');
+$ui.newPage('login');
 
 // Route to "home" page
-watcher.setPageId('home');
+$ui.newPage('home');
 
 // Route to "dashboard" page
-watcher.setPageId('dashboard');
-
-
-// Same process for viewer
-viewer.setPageId('login');
-
-// Route to "home" page
-viewer.setPageId('home');
-
-// Route to "dashboard" page
-viewer.setPageId('dashboard');
-
+$ui.newPage('dashboard');
 ```
 
 # Object Interface
 
-### UiWatcher
+### $ui object
+This is the base library.
 
-#### UiWatcher(params)
-The constructor takes a single object parameter. The parameter has three required properties.
 
-* **accountId** Your UXT accountId
-* **token** UiWatcher token. Created and displayed when you create a **product** in **UXT**.
-* **pageId** The page name that uniquely describes the page your are currently tracking data for.
+#### $ui.initWatcher(params)
+This method initializes the UiWatcher object. The method takes a single object parameter. The parameter has two required properties.
+
+* **accountId** Your GoGo User accountId
+* **token** UiWatcher token. Created and displayed when you create a **product** in **GoGo User**.
 
 ```
-let params = {
+const params = {
     accountId: "11111111-1111-1111-1111-111111111111",
-    token: "22222222-2222-2222-2222-222222222222",
-    pageId: "login"
+    token: "22222222-2222-2222-2222-222222222222"
 }
 
-let watcher = new UiWatcher(params);
+$ui.initWatcher(params);
 ```
 
-#### UiWatcher.setPageId(pageId)
-Sets the **pageId**. This is useful for Single Page Apps or if you want to customize how you track specific pages.
+#### $ui.newPage(pageId)
+Sets the **pageId**. This is useful for Single Page Apps (SPAs) or if you want to customize how you track specific pages.
 
 ```
-watcher.setPageId('login');
-watcher.setPageId('home');
+$ui.newPage('login');
+$ui.newPage('home');
 ```
+
+### UiWatcher
+User analytics and behavior object. Must call $ui.initWatcher(params) to initialize.
 
 #### UiWatcher.addContext(key, value)
 Adds a page context value. This method is useful for tracking custom analytic data per page.
 
 ```
-watcher.addContext("client", "my-client");
-watcher.addContext("username", "jdoe");
+$ui.watcher.addContext("clientId", "my-client-id");
+$ui.watcher.addContext("username", "jdoe");
 ```
 
 #### UiWatcher.clearContext()
 Clears the current page context.
 ```
-watcher.clearContext();
+$ui.watcher.clearContext();
 ```
 
-### UiViewer
-
-#### UiViewer(params)
-The constructor takes a single object parameter. The parameter has four required properties.
-
-* **name** The UiViewer instance name. Must be a global var.
-* **accountId** Your UXT accountId
-* **token** UiViewer token. Created and displayed when you create a **product** in **UXT**.
-* **pageId** The page name that uniquely describes the page your are currently viewing data for.
-
+#### UiWatcher.removeContext(key)
+Removes a specific context by key.
 ```
-let params = {
-    name: "viewer",
-    accountId: "11111111-1111-1111-1111-111111111111",
-    token: "33333333-3333-3333-3333-333333333333",
-    pageId: "login"
-}
-
-// "viewer" is the UiViewer instance varriable (must be passed as a param to the constructor)
-viewer = new UiViewer(params);
+$ui.watcher.removeContext('favorite-color');
 ```
 
-#### UiViewer.setPageId(pageId)
-Sets the **pageId**. This is useful for Single Page Apps or if you want to customize how you view specific pages.
-
+#### UiWatcher.enable()
+Enables the watcher.
 ```
-viewer.setPageId('login');
-viewer.setPageId('home');
+$ui.watcher.enable();
 ```
 
-#### UiViewer.update()
-Updates the current view. Applying any filter options and then re-drawing all the data visualizations.
-
+#### UiWatcher.disable()
+Disables the watcher. This disables both heatmap data collection and replay data.
 ```
-viewer.update();
-```
-
-#### UiViewer.toggle()
-Toggles (shows/hides) the UiViewer control pannel.
-
-```
-viewer.toggle();
+$ui.watcher.disable();
 ```
 
-#### UiViewer.draw()
-Re-draws all the data visualizations.
-
+#### UiWatcher.enableReplay()
+Enables replay tracking. NOTE: The watcher must also be enabled (see UiWatcher.enable() above) to track any data.
 ```
-viewer.draw();
+$ui.watcher.disableReplay();
+```
+
+#### UiWatcher.disableReplay()
+Disables replay tracking.
+```
+$ui.watcher.disableReplay();
+```
+
+#### UiWatcher.getSessionId()
+Retrieves the current user's UiWatcher sessionId. This ID can be passed along to your help desk system (or other 3rd party solutions) and then used to find a specific user's replays.
+```
+const sessionId = $ui.watcher.getSessionId();
+
+console.log(sessionId);
+```
+
+#### UiWatcher.addError(errorEvent)
+UiWatcher automatically logs any uncaught errors. If you'd like to manually log a specific error for any reason, then you may do so using this method.
+```
+const type = 'error';
+
+var errorEvent = new ErrorEvent(type, {
+    error : new Error('Your custom error message.'),
+    message : 'Your custom error message.',
+    lineno : 402,
+    filename : 'my_file.js'
+});
+
+$ui.watcher.addError(errorEvent);
 ```
