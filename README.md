@@ -117,6 +117,20 @@ $ui.watcher.addContext("clientId", "my-client-id");
 $ui.watcher.addContext("username", "jdoe");
 ```
 
+*NOTE:* UiWatcher has some specialized context values.
+
+ * *url-path (reserved):* This context is automatically set to window.location.pathname every page load.
+ * *event-type (reserved):* This context is set to the javascript event that is being logged (i.e., click, change, load, etc).
+ * *css-selector (reserved):* The css selector that triggered the javascript event.
+ * *text-contect (reserved):* If the css selector that triggered the javascript event has text content, then this contect is set.
+ * *dom-id (reserved):* If the DOM element that trigger the javascript event has an ID, then this context is set.
+ * *page-id:* Set by $ui.newPage(pageId). Using this method is required by single page apps. If $ui.newPage(pageId) is not called, then *page-id* will be set to *url-path* (see above). Do not set this context manually (i.e., $ui.watcher.addContext('page-id', 'my_page')). Doing so will produce undesired results. Use $ui.newPage(pageId) to set this context.
+ * *utm_source:* This context can get set automatically using customized links (i.e., google add links etc)
+ * *utm_medium:* This context can get set automatically using customized links (i.e., google add links etc)
+ * *utm_campaign:* This context can get set automatically using customized links (i.e., google add links etc)
+ * *utm_term:* This context can get set automatically using customized links (i.e., google add links etc)
+ * *utm_content:* This context can get set automatically using customized links (i.e., google add links etc)
+
 #### UiWatcher.clearContext()
 Clears the current page context.
 ```
@@ -166,7 +180,7 @@ UiWatcher automatically logs any uncaught errors. If you'd like to manually log 
 ```
 const type = 'error';
 
-var errorEvent = new ErrorEvent(type, {
+const errorEvent = new ErrorEvent(type, {
     error : new Error('Your custom error message.'),
     message : 'Your custom error message.',
     lineno : 402,
