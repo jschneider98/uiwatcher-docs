@@ -29,7 +29,7 @@ The UiWatcher tracks user activity. Generally speaking all you need to do to sta
 </body>
 ```
 
-You can of course do more with the tool than the minium. For instance, you can track custom analytic context values.
+You can of course do more with the tool than the minimum. For instance, you can track custom analytic context values.
 ```
 <body>
     <!-- Your web page body -->
@@ -101,6 +101,31 @@ const params = {
 
 $ui.initWatcher(params);
 ```
+
+There a few optional parameters that can be passed to the init method.
+
+* **context (obj):** Default: `{}`. Set analytic context. Useful if you don't want to call `$ui.watcher.addContext(key, value)` multiple times.
+* **enabled (bool):** Default: `true`. Enable/Disable all data tracking. Useful if you want to conditionally enable/disable the tool. For instance, you may want it disabled in development environments and enabled in production.
+* **replayEnabled (bool):** Default: `true`. Enable/Disable replay data tracking.
+
+Here's an example using all available parameters (required and optional):
+
+```
+const params = {
+    accountId: "11111111-1111-1111-1111-111111111111", // required
+    token: "22222222-2222-2222-2222-222222222222", // required
+    context: { // optional
+        "clientId": "1234",
+        "username": "jdoe",
+        "favorite-color": "Red"
+    },
+    enabled: true, // optional
+    replayEnabled: true // optional
+}
+
+$ui.initWatcher(params);
+```
+
 
 #### $ui.newPage(pageId)
 
