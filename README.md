@@ -193,9 +193,9 @@ $ui.watcher.disable();
 
 #### UiWatcher.enableReplay()
 
-Enables replay tracking. **NOTE:** The watcher must also be enabled (see UiWatcher.enable() above) to track any data.
+Enables replay tracking. **NOTE:** The watcher must also be enabled (see `UiWatcher.enable()` above) to track any data.
 ```
-$ui.watcher.disableReplay();
+$ui.watcher.enableReplay();
 ```
 
 #### UiWatcher.disableReplay()
