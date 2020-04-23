@@ -102,7 +102,7 @@ const params = {
 $ui.initWatcher(params);
 ```
 
-There a few optional parameters that can be passed to the init method.
+There are a few optional parameters that can be passed to the init method.
 
 * **context (obj):** Default: `{}`. Set analytic context. Useful if you don't want to call `$ui.watcher.addContext(key, value)` multiple times.
 * **enabled (bool):** Default: `true`. Enable/Disable all data tracking. Useful if you want to conditionally enable/disable the tool. For instance, you may want it disabled in development environments and enabled in production.
@@ -149,7 +149,7 @@ $ui.watcher.addContext("clientId", "my-client-id");
 $ui.watcher.addContext("username", "jdoe");
 ```
 
-*NOTE:* UiWatcher has some specialized context values.
+**NOTE:** UiWatcher has some specialized context values.
 
  * **url-path (reserved):** This context is automatically set to window.location.pathname every page load.
  * **event-type (reserved):** This context is set to the javascript event that is being logged (i.e., click, change, load, etc).
@@ -193,7 +193,7 @@ $ui.watcher.disable();
 
 #### UiWatcher.enableReplay()
 
-Enables replay tracking. NOTE: The watcher must also be enabled (see UiWatcher.enable() above) to track any data.
+Enables replay tracking. **NOTE:** The watcher must also be enabled (see UiWatcher.enable() above) to track any data.
 ```
 $ui.watcher.disableReplay();
 ```
