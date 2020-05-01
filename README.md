@@ -40,7 +40,7 @@ You can of course do more with the tool than the minimum. For instance, you can 
     <!-- This snippet needs to be added to the bottom of your <body> tag -->
     <script>
         window.addEventListener("load", function() {
-            // accountId is your GoGo Userr account ID
+            // accountId is your GoGo User account ID
             // token is your product's watcher token
             const params = {
                 accountId: "11111111-1111-1111-1111-111111111111",
@@ -154,7 +154,7 @@ $ui.watcher.addContext("username", "jdoe");
  * **url-path (reserved):** This context is automatically set to window.location.pathname every page load.
  * **event-type (reserved):** This context is set to the javascript event that is being logged (i.e., click, change, load, etc).
  * **css-selector (reserved):** The css selector that triggered the javascript event.
- * **text-contect (reserved):** If the css selector that triggered the javascript event has text content, then this contect is set.
+ * **text-content (reserved):** If the css selector that triggered the javascript event has text content, then this contect is set.
  * **dom-id (reserved):** If the DOM element that trigger the javascript event has an ID, then this context is set.
  * **page-id:** Set by `$ui.newPage(pageId)`. Using this method is required by single page apps. If `$ui.newPage(pageId)` is not called, then **page-id** will be set to **url-path** (see above). Do not set this context manually (i.e., `$ui.watcher.addContext('page-id', 'my_page')`). Doing so will produce undesired results. Use `$ui.newPage('my_page')` to set this context.
  * **utm_source:** This context can get set automatically using customized links (i.e., google add links etc)
