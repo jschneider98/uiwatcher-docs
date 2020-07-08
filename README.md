@@ -11,10 +11,10 @@ The UiWatcher tracks user activity. Generally speaking all you need to do to sta
 <body>
     <!-- Your web page body -->
 
-    <!-- This script tag can be added to your <head> tag if you prefer -->
-    <script src="https://app.gogouser.com/dist/uiwatcher.min.js"></script>
 
     <!-- This snippet needs to be added to the bottom of your <body> tag -->
+    <script src="https://app.gogouser.com/dist/uiwatcher.min.js"></script>
+    
     <script>
         window.addEventListener("load", function() {
             // accountId is your GoGo User account ID
