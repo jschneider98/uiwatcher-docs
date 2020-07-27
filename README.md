@@ -46,7 +46,8 @@ You can of course do more with the tool than the minimum. For instance, you can 
                 token: "22222222-2222-2222-2222-222222222222"
             }
 
-            // The init() method returns a promise. After init() completes the $gogo object is available for use.
+            // The init() method returns a promise.
+            // After init() completes the $gogo object is available for use.
             // The $gogo object is what is used to add custom analytic context values.
             $gogoLoader.init(params).then(function() {
                 // You can add custom analytic context values.
